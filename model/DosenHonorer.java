@@ -17,4 +17,9 @@ public class DosenHonorer extends Dosen {
         super(nama, alamat, ttl, telepon, nik, departemen, matkulAjarList);
         this.hororPerSKS = honorPerSKS;
     }
+
+    @Override
+    public String toString(){
+        return "Type : " + this.getClass().getSimpleName() + "\n" + super.toString() + super.toString() + "\nHonor Per SKS : " + hororPerSKS;
+    }
 }

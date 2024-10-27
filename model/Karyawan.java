@@ -30,6 +30,6 @@ public class Karyawan extends Staff {
 
     @Override
     public String toString() {
-        return super.toString() + "\nSalary: " + salary + "\nPresensi Staff: " + presensiStaffList;
+        return "Type : " + this.getClass().getSimpleName() + "\n" + super.toString() + super.toString() + "\nSalary: " + salary + "\nPresensi Staff: " + presensiStaffList;
     }
 }

@@ -17,4 +17,9 @@ public class DosenTetap extends Dosen {
         super(nama, alamat, ttl, telepon, nik, departemen, matkulAjarList);
         this.salary = salary;
     }
+
+    @Override
+    public String toString(){
+        return "Type : " + this.getClass().getSimpleName() + "\n" + super.toString() + super.toString() + "\nSalary: " + salary;
+    }
 }

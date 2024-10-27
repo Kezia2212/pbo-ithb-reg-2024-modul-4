@@ -22,4 +22,16 @@ public class Sarjana extends Mahasiswa {
     public String toString() {
         return "Type : " + this.getClass().getSimpleName() + "\n" + super.toString() + "\nMatkul: " + matakuliah;
     }
+
+    @Override
+    public double NA() {
+        double totalNilai = 0;
+        int jumlahMatkul = matakuliah.size();
+    
+        for (MatkulAmbil matkul : matakuliah) {
+            totalNilai += (matkul.getN1() + matkul.getN2() + matkul.getN3()) / 3.0; 
+        }
+    
+        return jumlahMatkul > 0 ? totalNilai / jumlahMatkul : 0;
+    }
 }
