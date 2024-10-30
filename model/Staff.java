@@ -8,8 +8,8 @@ public abstract class Staff extends User {
         return NIK;
     }
 
-    public void setNIK(String nIK) {
-        NIK = nIK;
+    public void setNIK(String NIK) {
+        this.NIK = NIK;
     }
 
     public Staff(String nama, String alamat, String ttl, String telepon, String NIK) {

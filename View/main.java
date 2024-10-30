@@ -3,6 +3,7 @@ package View;
 import java.util.*;
 import javax.swing.JOptionPane;
 import model.*;
+import model.Staff;
 import controller.functionAll;
 
 public class Main {
@@ -63,6 +64,8 @@ public class Main {
                                         break;
 
                                 case 7:
+                                        String NIK2 = JOptionPane.showInputDialog("Masukkan NIK Staff: ");
+                                        functionAll.menu7(NIK2, karyawanList);
                                         break;
                                 case 0:
                                         JOptionPane.showMessageDialog(null, "Keluar dari program", "",

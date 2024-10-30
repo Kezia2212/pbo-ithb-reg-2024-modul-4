@@ -203,14 +203,61 @@ public class functionAll {
     }
 
     static int itungJam(Dosen dosen){
-            int jamKerja = 0;
-            for (MatkulAjar matkulAjar : dosen.getMatkulAjarList()) {
-                for (PresensiStaff stafAbs : matkulAjar.getPresensiStaffList()) {
-                    if (stafAbs.getStatus() == 1) {
-                        jamKerja += stafAbs.getJam();
-                    }
+        int jamKerja = 0;
+        for (MatkulAjar matkulAjar : dosen.getMatkulAjarList()) {
+            for (PresensiStaff stafAbs : matkulAjar.getPresensiStaffList()) {
+                if (stafAbs.getStatus() == 1) {
+                    jamKerja += stafAbs.getJam();
                 }
             }
-            return jamKerja;
         }
+        return jamKerja;
     }
+
+
+    public static void menu7(String NIK, ArrayList<Staff> staffList){
+        double salary = 0;
+        int totalAbsen = 0;
+        for (Staff staff : staffList) {
+            if (staff.getNIK().equalsIgnoreCase(NIK)) {
+                if (staff instanceof DosenHonorer) {
+                    DosenHonorer honor = (DosenHonorer) staff;
+                    for (MatkulAjar matkulAjar : honor.getMatkulAjarList()) {
+                        for (PresensiStaff stafAbs : matkulAjar.getPresensiStaffList()) {
+                            if (stafAbs.getStatus() == 1) {
+                                totalAbsen++;
+                            }
+                        }
+                    }
+                    salary = honor.getHororPerSKS() * totalAbsen;
+                } else if (staff instanceof DosenTetap) {
+                    DosenTetap tetep = (DosenTetap) staff;
+                    for (MatkulAjar matkulAjar : tetep.getMatkulAjarList()) {
+                        for (PresensiStaff stafAbs : matkulAjar.getPresensiStaffList()) {
+                            if (stafAbs.getStatus() == 1) {
+                                totalAbsen++;
+                            }
+                        }
+                    }
+                    salary = tetep.getSalary() + (totalAbsen*25000);
+                } else if (staff instanceof Karyawan) {
+                    Karyawan kar = (Karyawan) staff;
+                    for (PresensiStaff stafAbs : kar.getPresensiStaffList()) {
+                        if (stafAbs.getStatus() == 1) {
+                            totalAbsen++;
+                        }
+                    }
+                    salary = totalAbsen/22*salary;
+                } 
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "NIK staff yang dicari tidak ditemukan", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Salarynya : " + salary, "Jam Kerja Staff",
+                    JOptionPane.INFORMATION_MESSAGE);
+    }
+
+}
