@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Mahasiswa extends User implements nilaiAkhir {
+public abstract class Mahasiswa extends User {
     private String NIM, jurusan;
 
     public String getNIM() {
@@ -29,7 +29,10 @@ public abstract class Mahasiswa extends User implements nilaiAkhir {
     public String toString() {
         return super.toString() + "\nNIM : " + NIM + "\nJurusan : " + jurusan;
     }
+
+
 }
+
 
 
 

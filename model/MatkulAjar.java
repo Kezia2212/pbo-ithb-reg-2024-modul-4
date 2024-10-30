@@ -16,6 +16,6 @@ public class MatkulAjar extends Matkul {
 
     @Override
     public String toString() {
-        return super.toString() +  "\nPresensi Staff: " + presensiStaffList;
+        return "\nPresensi Staff: " + presensiStaffList;
     }
 }

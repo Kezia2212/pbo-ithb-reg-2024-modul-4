@@ -32,7 +32,6 @@ public class MatkulAmbil extends Matkul{
 
     @Override
     public String toString() {
-        return super.toString() + "\nNilai Ujian 1: " + n1 + "\nNilai Ujian 2: " + n2 + "\nNilai Ujian 3: " + n3
-                + "\nPresensi: " + presensiList;
+        return "Nama Matkul : " + super.getNamaMatkul() + "\nPresensi: " + presensiList;
     }
 }

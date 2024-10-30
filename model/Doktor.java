@@ -1,6 +1,6 @@
 package model;
 
-public class Doktor extends Mahasiswa { 
+public class Doktor extends Mahasiswa{ 
     private String judulPenelitianDisertasi;
     private int ns1, ns2, ns3;
 

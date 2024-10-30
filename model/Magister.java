@@ -2,7 +2,7 @@ package model;
 
 import java.util.*;
 
-public class Magister extends Mahasiswa { 
+public class Magister extends Mahasiswa{ 
     private ArrayList<MatkulAmbil> matakuliah;
     private String judulPenelitianTesis;
 
@@ -32,5 +32,6 @@ public class Magister extends Mahasiswa {
     public String toString() {
         return "Type : " + this.getClass().getSimpleName() + "\n" + super.toString() + "\nMatakuliah " + matakuliah;
     }
+
 }
 
