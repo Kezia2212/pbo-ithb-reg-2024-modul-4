@@ -8,6 +8,7 @@ import controller.functionAll;
 public class Main {
 
         static ArrayList<Mahasiswa> mahasiswaList = new ArrayList<Mahasiswa>();
+        static ArrayList<Staff> karyawanList = new ArrayList<Staff>();
 
         public static void main(String[] args) {
                 dummy();
@@ -57,6 +58,8 @@ public class Main {
                                         break;
 
                                 case 6:
+                                        String NIK = JOptionPane.showInputDialog("Masukkan NIK Dosen: ");
+                                        functionAll.menu6(NIK, karyawanList);
                                         break;
 
                                 case 7:
@@ -74,38 +77,40 @@ public class Main {
         }
 
         public static void dummy() {
-                ArrayList<PresensiMhs> presensiListMhs = new ArrayList<PresensiMhs>();
+                ArrayList<PresensiMhs> presensiListMhs = new ArrayList<>();
                 ArrayList<PresensiStaff> presensiListStaff = new ArrayList<>();
                 ArrayList<PresensiStaff> presensiListStaff2 = new ArrayList<>();
                 ArrayList<PresensiMhs> presensiListMhs2 = new ArrayList<>();
                 ArrayList<MatkulAmbil> matkul1 = new ArrayList<>();
                 ArrayList<MatkulAmbil> matkul2 = new ArrayList<>();
-                ArrayList<MatkulAjar> matkul3 = new ArrayList<>();
-                ArrayList<MatkulPilihan> matkul4 = new ArrayList<>();
+                ArrayList<MatkulAjar> matkulAjar1 = new ArrayList<>();
+                ArrayList<MatkulAjar> matkulAjar2 = new ArrayList<>();
+                ArrayList<MatkulAjar> matkulAjar3 = new ArrayList<>();
+                ArrayList<MatkulAmbil> matkul4 = new ArrayList<>();
 
                 presensiListMhs.add(new PresensiMhs(new Date(), 1, "08:00")); // Mahasiswa hadir jam 08:00
                 presensiListMhs.add(new PresensiMhs(new Date(), 0, "10:00")); // Mahasiswa tidak hadir, jam 10:00
                 presensiListMhs.add(new PresensiMhs(new Date(), 1, "14:00")); // Mahasiswa hadir jam 14:00
 
-                presensiListStaff.add(new PresensiStaff(new Date(), 1, "3"));
-                presensiListStaff.add(new PresensiStaff(new Date(), 1, "5"));
-                presensiListStaff.add(new PresensiStaff(new Date(), 0, "1"));
-                presensiListStaff.add(new PresensiStaff(new Date(), 1, "2"));
-                presensiListStaff.add(new PresensiStaff(new Date(), 1, "3"));
-                presensiListStaff.add(new PresensiStaff(new Date(), 1, "2"));
-                presensiListStaff.add(new PresensiStaff(new Date(), 0, "4"));
-                presensiListStaff.add(new PresensiStaff(new Date(), 1, "2"));
-                presensiListStaff.add(new PresensiStaff(new Date(), 0, "1"));
-                presensiListStaff2.add(new PresensiStaff(new Date(), 1, "5"));
-                presensiListStaff2.add(new PresensiStaff(new Date(), 1, "8"));
-                presensiListStaff2.add(new PresensiStaff(new Date(), 0, "2"));
-                presensiListStaff2.add(new PresensiStaff(new Date(), 1, "2"));
-                presensiListStaff2.add(new PresensiStaff(new Date(), 1, "7"));
-                presensiListStaff2.add(new PresensiStaff(new Date(), 0, "4"));
-                presensiListStaff2.add(new PresensiStaff(new Date(), 1, "6"));
-                presensiListStaff2.add(new PresensiStaff(new Date(), 0, "3"));
-                presensiListStaff2.add(new PresensiStaff(new Date(), 1, "7"));
-                presensiListStaff2.add(new PresensiStaff(new Date(), 0, "8"));
+                presensiListStaff.add(new PresensiStaff(new Date(), 1, 3));
+                presensiListStaff.add(new PresensiStaff(new Date(), 1, 5));
+                presensiListStaff.add(new PresensiStaff(new Date(), 0, 1));
+                presensiListStaff.add(new PresensiStaff(new Date(), 1, 2));
+                presensiListStaff.add(new PresensiStaff(new Date(), 1, 3));
+                presensiListStaff.add(new PresensiStaff(new Date(), 1, 2));
+                presensiListStaff.add(new PresensiStaff(new Date(), 0, 4));
+                presensiListStaff.add(new PresensiStaff(new Date(), 1, 2));
+                presensiListStaff.add(new PresensiStaff(new Date(), 0, 1));
+                presensiListStaff2.add(new PresensiStaff(new Date(), 1, 5));
+                presensiListStaff2.add(new PresensiStaff(new Date(), 1, 8));
+                presensiListStaff2.add(new PresensiStaff(new Date(), 0, 2));
+                presensiListStaff2.add(new PresensiStaff(new Date(), 1, 2));
+                presensiListStaff2.add(new PresensiStaff(new Date(), 1, 7));
+                presensiListStaff2.add(new PresensiStaff(new Date(), 0, 4));
+                presensiListStaff2.add(new PresensiStaff(new Date(), 1, 6));
+                presensiListStaff2.add(new PresensiStaff(new Date(), 0, 3));
+                presensiListStaff2.add(new PresensiStaff(new Date(), 1, 7));
+                presensiListStaff2.add(new PresensiStaff(new Date(), 0, 8));
 
                 presensiListMhs2.add(new PresensiMhs(new Date(), 1, "07:30")); // Mahasiswa hadir jam 07:30 (tepat
                                                                                // waktu)
@@ -131,32 +136,50 @@ public class Main {
                                 95.0);
                 MatkulAmbil matkulA10 = new MatkulAmbil("IF010", 3, "Kecerdasan Buatan", presensiListMhs, 88.5, 90.0,
                                 92.0);
-                MatkulAjar matkulA11 = new MatkulAjar("IF011", 4, "Rekayasa Perangkat Lunak", presensiListStaff);
-                MatkulAjar matkulA12 = new MatkulAjar("IF012", 2, "Teori Graf", presensiListStaff);
-                MatkulAjar matkulA13 = new MatkulAjar("IF013", 1, "Statistika", presensiListStaff);
-                MatkulAjar matkulA14 = new MatkulAjar("IF014", 3, "Machine Learning", presensiListStaff);
-                MatkulAjar matkulA15 = new MatkulAjar("IF015", 4, "Mobile Programming", presensiListStaff);
+                MatkulAjar matkulA11 = new MatkulAjar("IF001", 4, "Algoritma", presensiListStaff);
+                MatkulAjar matkulA12 = new MatkulAjar("IF002", 3, "Matvek", presensiListStaff);
+                MatkulAjar matkulA13 = new MatkulAjar("IF003", 2, "Sisber", presensiListStaff);
+                MatkulAjar matkulA14 = new MatkulAjar("IF004", 1, "Prak Algo", presensiListStaff);
+                MatkulAjar matkulA15 = new MatkulAjar("IF005", 4, "Basis Data", presensiListStaff);
 
-                // System.out.println(matkulA1.toString());
-                // asumsi bahwa matkul 1 diambil oleh semua mahasiswa sarjana
+                matkulAjar1.add(matkulA11);
+                matkulAjar1.add(matkulA12);
+                matkulAjar1.add(matkulA13);
+                matkulAjar1.add(matkulA14);
+                matkulAjar1.add(matkulA15);
+
+                matkulAjar2.add(new MatkulAjar("IF006", 3, "Jaringan Komputer", presensiListStaff));
+                matkulAjar2.add(new MatkulAjar("IF007", 4, "Pengembangan Web", presensiListStaff));
+                matkulAjar2.add(new MatkulAjar("IF008", 2, "Analisis Algoritma", presensiListStaff));
+                matkulAjar2.add(new MatkulAjar("IF009", 1, "Sistem Operasi", presensiListStaff));
+                matkulAjar2.add(new MatkulAjar("IF010", 3, "Kecerdasan Buatan", presensiListStaff));
+        
+                matkulAjar3.add(new MatkulAjar("IF011", 3, "Cloud Computing", presensiListStaff));
+                matkulAjar3.add(new MatkulAjar("IF012", 2, "Keamanan Jaringan", presensiListStaff));
+                matkulAjar3.add(new MatkulAjar("IF013", 1, "Kriptografi", presensiListStaff));
+                matkulAjar3.add(new MatkulAjar("IF014", 3, "Data Mining", presensiListStaff));
+                matkulAjar3.add(new MatkulAjar("IF015", 4, "Internet of Things", presensiListStaff));
+                                // System.out.println(matkulA1.toString());
                 matkul1.add(matkulA1);
                 matkul1.add(matkulA2);
                 matkul1.add(matkulA3);
                 matkul1.add(matkulA4);
                 matkul1.add(matkulA5);
+                
+                matkul4.add(new MatkulAmbil("IF011", 3, "Cloud Computing", presensiListMhs2, 75.5, 85.0, 90.0));
+                matkul4.add(new MatkulAmbil("IF012", 2, "Keamanan Jaringan", presensiListMhs, 78.0, 70.0, 88.0));
+                matkul4.add(new MatkulAmbil("IF013", 1, "Kriptografi", presensiListMhs, 85.0, 90.0, 95.0));
+                matkul4.add(new MatkulAmbil("IF014", 3, "Data Mining", presensiListMhs, 80.0, 90.0, 95.0));
+                matkul4.add(new MatkulAmbil("IF015", 4, "Internet of Things", presensiListMhs, 85.0, 90.0, 95.0));
 
-                // asumsi bahwa matkul 2 diambil oleh semua mahasiswa magister
+
                 matkul2.add(matkulA6);
                 matkul2.add(matkulA7);
                 matkul2.add(matkulA8);
                 matkul2.add(matkulA9);
                 matkul2.add(matkulA10);
 
-                matkul3.add(matkulA11);
-                matkul3.add(matkulA12);
-                matkul3.add(matkulA13);
-                matkul3.add(matkulA14);
-                matkul3.add(matkulA15);
+                
 
                 MatkulPilihan matkul11 = new MatkulPilihan("MP-001", 3, "Pemrograman Web", 5);
                 MatkulPilihan matkul12 = new MatkulPilihan("MP-002", 4, "Kecerdasan Buatan", 6);
@@ -164,56 +187,60 @@ public class Main {
                 MatkulPilihan matkul14 = new MatkulPilihan("MP-004", 3, "Data Mining", 7);
                 MatkulPilihan matkul15 = new MatkulPilihan("MP-005", 2, "Rekayasa Perangkat Lunak", 5);
 
-                matkul4.add(matkul11);
-                matkul4.add(matkul12);
-                matkul4.add(matkul13);
-                matkul4.add(matkul14);
-                matkul4.add(matkul15);
-
                 // Mahasiswa
 
-                // Dummy data untuk Sarjana
-                Mahasiswa MhsSarjana1 = new Sarjana("Kezia Natalia", "rumah", "Bandung, 22 Des 2004", "0829818928912",
-                                "Informatika", "S001", matkul1);
-                Mahasiswa MhsSarjana2 = new Sarjana("Pierre Yosefa", "begitulah...", "Tasik, 26 July 2004",
+                mahasiswaList.add(new Sarjana("Kezia Natalia", "rumah", "Bandung, 22 Des 2004", "0829818928912",
+                                "Informatika", "S001", matkul1));
+                mahasiswaList.add(new Sarjana("Pierre Yosefa", "begitulah...", "Tasik, 26 July 2004",
                                 "0829818928912",
-                                "Informatika", "S002", matkul1);
-
-                // Dummy data untuk Magister
-                Mahasiswa MhsMagister1 = new Magister("Silvia Anggreni", "itulah", "Jakarta, 22 Des 2001",
+                                "Informatika", "S002", matkul1));
+                mahasiswaList.add(new Magister("Silvia Anggreni", "itulah", "Jakarta, 22 Des 2001",
                                 "0829818928912",
-                                "M001", "Informatika", matkul2, "Kenapa Saya Cepat Pusing");
-                Mahasiswa MhsMagister2 = new Magister("Teguh Handoyo", "Jl. Kenangan", "Bogor, 1 Mei 2002",
+                                "M001", "Informatika", matkul2, "Kenapa Saya Cepat Pusing"));
+                mahasiswaList.add(new Magister("Teguh Handoyo", "Jl. Kenangan", "Bogor, 1 Mei 2002",
                                 "082345678912",
-                                "M002", "Ilmu Komputer", matkul2, "Penerapan AI dalam Diagnosa");
-
-                // Dummy data untuk Doktor
-                Mahasiswa MhsDoktor1 = new Doktor("Dr. Siti", "Jl. Mawar No. 10", "1990-01-01", "08123456789", "D001",
-                                "Ilmu Komputer", "Optimasi Algoritma", 85, 90, 95);
-                Mahasiswa MhsDoktor2 = new Doktor("Dr. Budi Santoso", "Jl. Anggrek No. 5", "1985-03-10", "08134567890",
+                                "M002", "Ilmu Komputer", matkul2, "Penerapan AI dalam Diagnosa"));
+                mahasiswaList.add(new Doktor("Dr. Siti", "Jl. Mawar No. 10", "1990-01-01", "08123456789", "D001",
+                                "Ilmu Komputer", "Optimasi Algoritma", 85, 90, 95));
+                mahasiswaList.add(new Doktor("Dr. Budi Santoso", "Jl. Anggrek No. 5", "1985-03-10", "08134567890",
                                 "D002",
-                                "Sistem Informasi", "Analisis Big Data", 80, 85, 90);
+                                "Sistem Informasi", "Analisis Big Data", 80, 85, 90));
+                mahasiswaList.add(new Sarjana("Lina Sofia", "Jl. Melati", "Bandung, 15 Jan 2003", "08212345678",
+                                "Informatika", "S003", matkul4));
+                mahasiswaList.add(new Sarjana("Rizky Alif", "Jl. Cempaka", "Jakarta, 20 Feb 2004", "08298765432",
+                                "Informatika", "S004", matkul4));
+                mahasiswaList.add(new Magister("Silvia Anggreni", "itulah", "Jakarta, 22 Des 2001", "0829818928912",
+                                "M001", "Informatika", matkul2, "Kenapa Saya Cepat Pusing"));
+                mahasiswaList.add(new Magister("Teguh Handoyo", "Jl. Kenangan", "Bogor, 1 Mei 2002", "082345678912",
+                                "M002", "Ilmu Komputer", matkul4, "Penerapan AI dalam Diagnosa"));
+                mahasiswaList.add(new Magister("Dewi Lestari", "Jl. Merpati", "Surabaya, 18 Maret 2000", "08234567890",
+                                "M003", "Informatika", matkul2, "Perkembangan Teknologi Informasi"));
+                mahasiswaList.add(new Magister("Eko Prabowo", "Jl. Kenari", "Yogyakarta, 5 Apr 1999", "08123456789",
+                                "M004", "Ilmu Komputer", matkul1, "Implementasi AI dalam Kehidupan Sehari-hari"));
+                mahasiswaList.add(new Doktor("Dr. Siti", "Jl. Mawar No. 10", "1990-01-01", "08123456789", "D001",
+                                "Ilmu Komputer", "Optimasi Algoritma", 85, 90, 95));
+                mahasiswaList.add(new Doktor("Dr. Budi Santoso", "Jl. Anggrek No. 5", "1985-03-10", "08134567890",
+                                "D002", "Sistem Informasi", "Analisis Big Data", 80, 85, 90));
+                mahasiswaList.add(new Doktor("Dr. Maya", "Jl. Seruni No. 4", "1980-12-12", "08123456789", "D003",
+                                "Sistem Komputer", "Keamanan Sistem Informasi", 92, 90, 88));
+                mahasiswaList.add(new Doktor("Dr. Anton", "Jl. Flamboyan No. 7", "1978-06-06", "08123456780", "D004",
+                                "Data Science", "Analisis Data Besar", 90, 85, 87));
 
-                // Menambahkan objek-objek Mahasiswa ke ArrayList
-                mahasiswaList.add(MhsSarjana1);
-                mahasiswaList.add(MhsSarjana2);
-                mahasiswaList.add(MhsMagister1);
-                mahasiswaList.add(MhsMagister2);
-                mahasiswaList.add(MhsDoktor1);
-                mahasiswaList.add(MhsDoktor2);
-
-                Staff DosenTetap = new DosenTetap("Inge Martina", "di rumahnya", "gatau", "111", "11111", "Teknik",
-                                matkul3,
+                Staff DosenTetap1 = new DosenTetap("Inge Martina", "di rumahnya", "gatau", "111", "1", "Teknik",
+                                matkulAjar1,
                                 5000000);
+                Staff DosenTetap2 = new DosenTetap("Ko Dion", "di rumahnya", "gatau", "111", "2", "Teknik",
+                                matkulAjar2,
+                                4500000);
+                
                 Staff DosenHonorer = new DosenHonorer("Budi Santoso", "Jl. Kenanga No. 5", "1990-06-25", "089876543210",
-                                "22222", "Sistem Informasi", matkul3, 50000);
-                Staff Karyawan = new Karyawan("Udin", "..", "...", "238819", "33333", 1000000, presensiListStaff2);
-                // System.out.println(DosenTetap.toString());
-                // System.out.println();
-                // System.out.println(DosenHonorer.toString());
-                // System.out.println();
-                // System.out.println(Karyawan.toString());
-                // System.out.println();
+                                "3", "Sistem Informasi", matkulAjar3, 50000);
+                Staff Karyawan = new Karyawan("Udin", "..", "...", "238819", "3", 1000000, presensiListStaff2);
+                
+                karyawanList.add(DosenTetap1);
+                karyawanList.add(DosenTetap2);
+                karyawanList.add(DosenHonorer);
+                karyawanList.add(Karyawan);
         }
 
 }

@@ -3,19 +3,19 @@ package model;
 import java.util.*;
 
 public class PresensiStaff extends Presensi {
-    private String jam;
+    private int jam;
 
     
-    public PresensiStaff(Date tanggal, int status, String jam) {
+    public PresensiStaff(Date tanggal, int status, int jam) {
         super(tanggal, status);
         this.jam = jam;
     }
     
-    public void setJam(String jam) {
+    public void setJam(int jam) {
         this.jam = jam;
     }
 
-    public String getJam() {
+    public int getJam() {
         return jam;
     }
 
